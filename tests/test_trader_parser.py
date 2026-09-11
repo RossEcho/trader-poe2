@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from modifier_normalizer import extract_modifier_values, normalize_modifier
-from poe_item_parser import looks_like_poe_item, parse_explicit_modifiers
+from poe_item_parser import looks_like_poe_item, parse_explicit_modifiers, parse_item_class
 from trader_logic import format_decrement_value, parse_decrement_value
 
 
@@ -19,6 +19,13 @@ def test_parse_sample_explicit_modifiers_only():
         "19(19-21)% increased Cast Speed",
         "17(15-18)% increased Rarity of Items found",
     ]
+
+
+def test_parse_item_class():
+    item_text = FIXTURE_PATH.read_text(encoding="utf-8")
+
+    assert parse_item_class(item_text) == "Amulets"
+    assert parse_item_class("hello") is None
 
 
 def test_normalize_sample_modifiers():

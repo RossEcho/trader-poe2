@@ -6,11 +6,12 @@ import pyautogui
 import pyperclip
 
 from modifier_normalizer import extract_modifier_values, normalize_modifier
-from poe_item_parser import looks_like_poe_item, parse_explicit_modifiers
+from poe_item_parser import looks_like_poe_item, parse_explicit_modifiers, parse_item_class
 
 
 DEFAULT_TRADER_SETTINGS = {
     "clear_search_pos": None,
+    "item_category_pos": None,
     "add_stat_filter_pos": None,
     "value_input_pos": None,
     "search_button_pos": None,
@@ -116,6 +117,7 @@ class TraderAutomation:
             return
 
         raw_modifiers = parse_explicit_modifiers(item_text)
+        item_class = parse_item_class(item_text)
         stat_rows = [
             {
                 "raw": modifier,
@@ -143,6 +145,7 @@ class TraderAutomation:
             self.log(f"Raw: {row['raw']}")
             self.log(f"Normalized: {row['normalized']}")
             self.log(f"Value: {values}")
+        self.log(f"Item class: {item_class or 'none'}")
 
         if self.settings.get("dry_run", True):
             self.log("Dry run enabled; no trade UI clicks were sent.")
@@ -160,6 +163,19 @@ class TraderAutomation:
         self.log(f"Clicking Clear Search at {clear_pos[0]}, {clear_pos[1]}.")
         self._click(*clear_pos)
         self._sleep("after_clear_delay")
+
+        if item_class:
+            category_pos = tuple(self.settings["item_category_pos"])
+            self.log(f"Typing item category at {category_pos[0]}, {category_pos[1]}: {item_class}")
+            self._click(*category_pos)
+            self._sleep("after_add_click_delay")
+            pyperclip.copy(item_class)
+            pyautogui.hotkey("ctrl", "a")
+            pyautogui.hotkey("ctrl", "v")
+            self._sleep("dropdown_delay")
+            pyautogui.press("down")
+            pyautogui.press("enter")
+            self._sleep("between_mod_delay")
 
         add_pos = tuple(self.settings["add_stat_filter_pos"])
         value_pos = tuple(self.settings["value_input_pos"])
@@ -252,6 +268,7 @@ class TraderAutomation:
     def _validate_positions(self):
         for key, label in (
             ("clear_search_pos", "Clear Search"),
+            ("item_category_pos", "Item Category"),
             ("add_stat_filter_pos", "Add Stat Filter"),
             ("value_input_pos", "Value Input"),
         ):

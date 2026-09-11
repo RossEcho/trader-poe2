@@ -16,10 +16,13 @@ When you press the run hotkey:
 4. Normalizes each modifier for PoE trade search.
 5. Opens the in-game trade window with `/`.
 6. Clicks `Clear Search`.
-7. Adds each stat through `Add Stat Filter`.
-8. Selects the first dropdown result with `Down Arrow` then `Enter`.
-9. Clicks the value field for that row.
-10. Pastes the item's actual rolled value.
+7. Clicks `Item Category`.
+8. Pastes the copied item's `Item Class`.
+9. Selects the first category dropdown result with `Down Arrow` then `Enter`.
+10. Adds each stat through `Add Stat Filter`.
+11. Selects the first stat dropdown result with `Down Arrow` then `Enter`.
+12. Clicks the value field for that row.
+13. Pastes the item's actual rolled value.
 
 Example:
 
@@ -113,6 +116,7 @@ For each calibration point:
 Set these points:
 
 - `Clear Search`: the in-game Clear Search button.
+- `Item Category`: the in-game Item Category filter field.
 - `Add Stat Filter`: the first Add Stat Filter row where the next stat should be added.
 - `Value Input`: the first row's numeric value input field.
 - `Search Button`: the in-game Search button. This is only required for Find Match.
