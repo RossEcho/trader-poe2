@@ -15,6 +15,19 @@ def looks_like_poe_item(text):
     return all(marker in text for marker in required_markers)
 
 
+def parse_item_class(item_text):
+    if not item_text or not isinstance(item_text, str):
+        return None
+
+    for line in item_text.splitlines():
+        line = line.strip()
+        if line.startswith("Item Class:"):
+            item_class = line.split(":", 1)[1].strip()
+            return item_class or None
+
+    return None
+
+
 def parse_explicit_modifiers(item_text):
     if not looks_like_poe_item(item_text):
         return []

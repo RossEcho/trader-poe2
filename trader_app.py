@@ -54,7 +54,7 @@ class TraderApp(tk.Tk):
 
     def clean_settings(self, settings):
         cleaned = {}
-        for key in ("clear_search_pos", "add_stat_filter_pos", "value_input_pos", "search_button_pos"):
+        for key in ("clear_search_pos", "item_category_pos", "add_stat_filter_pos", "value_input_pos", "search_button_pos"):
             cleaned[key] = self.clean_point(settings.get(key))
 
         for key in ("hotkey", "abort_hotkey"):
@@ -145,6 +145,7 @@ class TraderApp(tk.Tk):
         self.point_vars = {}
         point_rows = [
             ("clear_search_pos", "Clear Search"),
+            ("item_category_pos", "Item Category"),
             ("add_stat_filter_pos", "Add Stat Filter"),
             ("value_input_pos", "Value Input"),
             ("search_button_pos", "Search Button"),
@@ -303,7 +304,10 @@ class TraderApp(tk.Tk):
         self.save_settings()
 
     def reset_settings(self):
-        saved_points = {key: self.trader_settings.get(key) for key in ("clear_search_pos", "add_stat_filter_pos", "value_input_pos", "search_button_pos")}
+        saved_points = {
+            key: self.trader_settings.get(key)
+            for key in ("clear_search_pos", "item_category_pos", "add_stat_filter_pos", "value_input_pos", "search_button_pos")
+        }
         self.trader_settings = dict(DEFAULT_TRADER_SETTINGS)
         self.trader_settings.update(saved_points)
         self.trader.update_settings(self.trader_settings)
