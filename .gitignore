@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+build/
+dist/
+*.spec
+*.exe
+trader_settings.json
+auto_flask_settings.json
+GameUI.PNG

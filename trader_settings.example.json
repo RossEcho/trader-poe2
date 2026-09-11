@@ -1,0 +1,19 @@
+{
+  "clear_search_pos": null,
+  "add_stat_filter_pos": null,
+  "value_input_pos": null,
+  "search_button_pos": null,
+  "hotkey": "num 1",
+  "abort_hotkey": "f12",
+  "dry_run": true,
+  "deduplicate": true,
+  "find_match": false,
+  "trade_open_delay": 0.7,
+  "after_clear_delay": 0.2,
+  "after_add_click_delay": 0.12,
+  "after_search_delay": 1.0,
+  "dropdown_delay": 0.35,
+  "between_mod_delay": 0.15,
+  "clipboard_delay": 0.18,
+  "add_stat_row_offset_y": 31
+}
