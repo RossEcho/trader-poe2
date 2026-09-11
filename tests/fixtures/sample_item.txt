@@ -1,0 +1,24 @@
+Item Class: Amulets
+Rarity: Rare
+Horror Rosary
+Gold Amulet
+--------
+Requires: Level 56
+--------
+Item Level: 73
+--------
+{ Implicit Modifier }
+12(12-20)% increased Rarity of Items found
+--------
+{ Prefix Modifier "Chalybeous" (Tier: 5) - Mana }
++114(105-124) to maximum Mana
+{ Prefix Modifier "Athlete's" (Tier: 1) - Life }
++145(120-149) to maximum Life
+{ Prefix Modifier "Scintillating" (Tier: 2) - Energy Shield }
++77(71-79) to maximum Energy Shield
+{ Suffix Modifier "of the Volcano" (Tier: 3) - Elemental, Fire, Resistance }
++34(31-35)% to Fire Resistance
+{ Desecrated Suffix Modifier "of Sortilege" (Tier: 3) - Caster, Speed }
+19(19-21)% increased Cast Speed
+{ Crafted Suffix Modifier "of Archaeology" (Tier: 1) }
+17(15-18)% increased Rarity of Items found
